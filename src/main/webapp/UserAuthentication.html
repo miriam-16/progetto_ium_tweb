@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>Autenticazione Utente</title>
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- <form action="ServletAuthentication" method="get">
+    <label for="lusername">Utente:</label><br>
+    <input type="text" id="lusername" name="utente_login"><br>
+    <label for="lpassword">Password:</label><br>
+    <input type="password" id="lpassword" name="password_login"><br><br>
+    <input type="submit" value="Submit">
+</form> -->
+
+<form method="post">
+  <label for="lusername">Utente:</label><br>
+  <input type="text" id="lusername" name="utente_login"><br>
+  <label for="lpassword">Password:</label><br>
+  <input type="password" id="lpassword" name="password_login"><br><br>
+  <input id="go" name="go" type="button" value="Ricevi info">
+</form>
+
+<div id="saluto"></div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#go").click(function(){
+      var account = document.getElementById("lusername").value;
+      var pass = document.getElementById("lpassword").value;
+      $.post("ServletAuthentication", {utente_login: account, password_login: pass},
+        function(data){
+          $("#saluto").html(data);
+        });
+    });
+  });
+</script>
+</body>
+</html>
